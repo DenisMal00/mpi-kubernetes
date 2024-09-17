@@ -159,3 +159,4 @@ OSU MPI Broadcast Latency Test v5.9
 524288                 61.97             61.60             62.34        1000
 1048576               118.39            117.42            119.35        1000
 ```
+Latencies between pods located on the same node are noticeably lower than those between pods on different nodes. 

@@ -28,7 +28,7 @@ To do the benchmark on two diffente nodes run first:
 ```bash
 kubectl apply -f pods_different_node.yaml
 ```
-Then, for the benchmark run:
+Then, after the nodes are created, for the benchmark run:
 ```bash
 chmod +x mpi_test.sh
 ./mpi_test.sh
@@ -37,12 +37,13 @@ After collecting the data run:
 ```bash
 kubectl delete -f pods_different_node.yaml
 ```
+And wait untile the nodes are deleted
 
 ### 4. Running the MPI Benchmark on the same node
 ```bash
 kubectl apply -f pods_same_node.yaml
 ```
-Then, for the benchmark run:
+Then,after the nodes are created, for the benchmark run:
 ```bash
 ./mpi_test.sh
 ```
@@ -50,3 +51,4 @@ After collecting the data run:
 ```bash
 kubectl delete -f pods_same_node.yaml
 ```
+And wait untile the nodes are deleted

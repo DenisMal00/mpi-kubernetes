@@ -15,6 +15,6 @@ spec:
       containers:
       - name: osu-benchmark
         image: den00/osu-benchmark-ssh
-        command: ["/bin/bash", "-c", "sleep infinity"]  # I pod rimarranno in esecuzione senza fare nulla
+        command: ["/bin/bash", "-c", "sleep infinity"]
         ports:
         - containerPort: 8080

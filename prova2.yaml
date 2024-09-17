@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osu-benchmark
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: osu-benchmark
+  template:
+    metadata:
+      labels:
+        app: osu-benchmark
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - osu-benchmark
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: osu-benchmark
+        image: den00/osu-benchmark-ssh
+        command: ["/bin/bash", "-c", "sleep infinity"]
+        ports:
+        - containerPort: 8080
+

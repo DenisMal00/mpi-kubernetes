@@ -1,0 +1,33 @@
+apiVersion: kubeflow.org/v2beta1
+kind: MPIJob
+metadata:
+  name: osu-benchmark
+spec:
+  slotsPerWorker: 1
+  runPolicy:
+    cleanPodPolicy: Running
+  mpiReplicaSpecs:
+    Launcher:
+      replicas: 1
+      template:
+        spec:
+          nodeSelector:
+            kubernetes.io/hostname: multinode-demo
+          containers:
+            - image: mpi-operator:local
+              name: osu-benchmark
+              command:
+                - mpirun
+                - --allow-run-as-root
+                - -np
+                - "2"
+                - mpi/pt2pt/osu_latency
+              
+    Worker:
+      replicas: 2
+      template:
+        spec:
+          containers:
+            - image: mpi-operator:local
+              name: osu-benchmark
+              

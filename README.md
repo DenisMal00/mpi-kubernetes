@@ -5,7 +5,6 @@ This project aims to estimate the latency between one and two nodes in a Kuberne
 ## Prerequisites
 - A Kubernetes cluster with at least two nodes: Minikube
 - kubectl configured to interact with your cluster.
-- Calico networking plugin installed.
 
 ## Steps
 
